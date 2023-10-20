@@ -50,7 +50,7 @@ public class UserProfileServlet extends HttpServlet {
 
         if (action.equals("edit")) {
             user.setFullName(request.getParameter("fullName"));
-            user.setPassword(request.getParameter("password"));
+           
             userService.updateUser(user);
         } else if (action.equals("delete")) {
             userService.deleteUser(userEmail);

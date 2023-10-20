@@ -47,9 +47,9 @@
         <div class="col-md-4">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Package Management</h5>
-                    <p class="card-text">Manage packages - Create, Edit, Delete</p>
-                    <a href="/EventPlaningSystem/drivers" class="btn btn-primary">Go to Package Management</a>
+                    <h5 class="card-title">Driver Management</h5>
+                    <p class="card-text">Manage drivers - Create, Edit, Delete</p>
+                    <a href="/EventPlaningSystem/drivers" class="btn btn-primary">Go to Driver Management</a>
                 </div>
             </div>
         </div>
