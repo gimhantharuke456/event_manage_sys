@@ -44,7 +44,15 @@ public class DriverServlet extends HttpServlet {
                 Driver driver = driverService.getDriverById(driverId);
                 request.setAttribute("driver", driver);
                 request.getRequestDispatcher("editDriver.jsp").forward(request, response);
-            } else {
+            } 
+            else if ("delete".equals(action)) {
+            	System.out.println("delete");
+                int vehicleId = Integer.parseInt(request.getParameter("driverId"));
+                driverService.deleteDriver(vehicleId);
+                response.sendRedirect(request.getContextPath() + "/drivers");
+                }
+            
+            else {
                 List<Driver> drivers = driverService.getAllDrivers();
                 request.setAttribute("drivers", drivers);
                 request.getRequestDispatcher("driverList.jsp").forward(request, response);

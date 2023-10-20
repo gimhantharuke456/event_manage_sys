@@ -52,23 +52,46 @@
                 </table>
                 <!-- Add new driver form -->
                <h2>Add New Driver</h2>
-<form action="<%= request.getContextPath() %>/drivers" method="post" id="driverForm">
-    <input type="hidden" name="action" id="formAction" value="create">
-    <input type="hidden" name="driverId" id="driverId">
-    
-    <div class="form-group">
-        <label for="name">Name:</label>
-        <input type="text" class="form-control" id="name" name="name" required>
-    </div>
-    
-    <div class="form-group">
-        <label for="licenseNumber">License Number:</label>
-        <input type="text" class="form-control" id="licenseNumber" name="licenseNumber" required>
-    </div>
-    
-    <button type="submit" class="btn btn-success">Add Driver</button>
-</form>
+                <form action="<%= request.getContextPath() %>/drivers" method="post" id="driverForm">
+                    <input type="hidden" name="action" id="formAction" value="create">
+                    <input type="hidden" name="driverId" id="driverId">
+                    
+                    <div class="form-group">
+                        <label for="name">Name:</label>
+                        <input type="text" class="form-control" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="licenseNumber">License Number:</label>
+                        <input type="text" class="form-control" id="licenseNumber" name="licenseNumber" required>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-success">Add Driver</button>
+                </form>
 
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete confirmation modal -->
+    <div class="modal fade" id="deleteConfirmationModal" tabindex="-1" role="dialog" aria-labelledby="deleteConfirmationModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteConfirmationModalLabel">Delete Confirmation</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to delete this driver?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    
+                    <a href="#" class="btn btn-danger" id="deleteDriverLink">Delete</a>
+                </div>
             </div>
         </div>
     </div>
@@ -86,8 +109,6 @@
 
     <script>
         $(document).ready(function () {
-            // ... Existing script code ...
-
             // Delete Driver link click handler
             $('.deleteDriverLink').click(function () {
                 var driverId = $(this).data('driver-id');
