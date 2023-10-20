@@ -24,11 +24,9 @@ public class LoginServlet extends HttpServlet {
                        emailCookie.setMaxAge(30 * 24 * 60 * 60); 
                        response.addCookie(emailCookie);
                 	  
-                       if("admin".equals(result.get("role"))) {
-                    	   response.sendRedirect("AdminHomeView.jsp");
-                       }else {
-                    	   response.sendRedirect("UserHomeView.jsp");
-                       }
+                      
+                        response.sendRedirect("AdminHomeView.jsp");
+                       
                    } catch (IOException e) {
                        e.printStackTrace();
                    }

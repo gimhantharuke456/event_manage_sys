@@ -19,34 +19,9 @@
 	    <url-pattern>/SignupServlet</url-pattern>
 	</servlet-mapping>
 	
-	 <servlet>
-        <servlet-name>ReservationServlet</servlet-name>
-        <servlet-class>com.controllers.ReservationServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>ReservationServlet</servlet-name>
-        <url-pattern>/reservation</url-pattern>
-    </servlet-mapping>
+	 
 	
 	
-	 <servlet>
-        <servlet-name>EventServlet</servlet-name>
-        <servlet-class>com.controllers.EventServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>EventServlet</servlet-name>
-        <url-pattern>/event</url-pattern>
-    </servlet-mapping>
-	
-	
-	 <servlet>
-        <servlet-name>PackageServlet</servlet-name>
-        <servlet-class>com.controllers.PackageServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>PackageServlet</servlet-name>
-        <url-pattern>/package</url-pattern>
-    </servlet-mapping>
     
      <servlet>
         <servlet-name>UserProfileServlet</servlet-name>
@@ -56,6 +31,15 @@
         <servlet-name>UserProfileServlet</servlet-name>
         <url-pattern>/profile</url-pattern>
     </servlet-mapping>
+    
+     <servlet>
+	    <servlet-name>VehicleServlet</servlet-name>
+	    <servlet-class>com.controllers.VehicleServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>VehicleServlet</servlet-name>
+	    <url-pattern>/vehicles</url-pattern>
+	</servlet-mapping>
 	
 	<jsp-config>
         <taglib>
