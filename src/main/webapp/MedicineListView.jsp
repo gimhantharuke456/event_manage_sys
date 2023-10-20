@@ -67,6 +67,27 @@
             <button type="submit" class="btn btn-success">Add Medicine</button>
         </form>
     </div>
+    
+      <div class="modal fade" id="deleteConfirmationModal" tabindex="-1" role="dialog" aria-labelledby="deleteConfirmationModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteConfirmationModalLabel">Delete Confirmation</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to delete this medicine?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <a href="#" class="btn btn-danger" id="deleteMedicineLink">Delete</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
             integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
@@ -78,6 +99,37 @@
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
 
-    <!-- Add additional scripts as needed -->
+    <script>
+    $(document).ready(function () {
+        // Delete Medicine link click handler
+        $('.deleteMedicineLink').click(function () {
+            var medicineId = $(this).data('medicine-id');
+
+            $('#deleteMedicineLink').attr('href', '<%= request.getContextPath() %>/medicines?action=delete&medicineId=' + medicineId);
+            // Show the delete confirmation modal
+            $('#deleteConfirmationModal').modal('show');
+        });
+
+        // Delete confirmation modal "Delete" button click handler
+        $('#deleteMedicineLink').click(function () {
+            var deleteUrl = $(this).attr('href');
+
+            // Make an AJAX request to the servlet to delete the medicine
+            $.ajax({
+                url: deleteUrl,
+                type: 'GET',
+                success: function (data) {
+                    // Handle success, if needed
+                    // Reload the page or update the UI
+                    window.location.reload();
+                },
+                error: function (error) {
+                    // Handle error, if needed
+                    console.error('Failed to delete medicine. Error: ' + error);
+                }
+            });
+        });
+    });
+    </script>
 </body>
 </html>
