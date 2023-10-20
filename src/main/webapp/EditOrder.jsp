@@ -22,7 +22,7 @@
           <!-- Edit order form -->
           <% Order order = (Order) request.getAttribute("order");
           if(order!=null){ %>
-          <form action="<%= request.getContextPath() %>/orders" method="post">
+          <form action="<%= request.getContextPath() %>/orders?action=edit" method="post">
             <input type="hidden" name="action" value="update" />
             <input
               type="hidden"
@@ -42,13 +42,13 @@
               />
             </div>
              <div class="form-group">
-              <label for="address">Ordered At:</label>
+              <label for="address">Ordered Address:</label>
               <input
                 type="text"
                 class="form-control"
                 id="address"
                 name="address"
-                value="<%= order.getAddress() %>"
+                value="<%= order.getAddress()%>"
                 required
               />
              </div>

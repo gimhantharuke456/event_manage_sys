@@ -42,10 +42,17 @@ public class MedicineServlet extends HttpServlet {
         String action = request.getParameter("action");
 
         if (action.equals("create")) {
-            // Create action: Add a new medicine
+           
             String name = request.getParameter("name");
             double price = Double.parseDouble(request.getParameter("price"));
-            int availability = Integer.parseInt(request.getParameter("availability"));
+            int availability = 0;
+            if(request.getParameter("availability")!=null) {
+            	try {
+            		availability=	Integer.parseInt(request.getParameter("availability"));
+            	}catch (Exception e) {
+            		
+            	}
+            }
 
             Medicine newMedicine = new Medicine();
             newMedicine.setAvailability(availability);

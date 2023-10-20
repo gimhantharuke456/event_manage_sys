@@ -70,7 +70,15 @@
         <servlet-name>PlaceOrderServlet</servlet-name>
         <url-pattern>/placeOrder</url-pattern>
     </servlet-mapping>
-	
+    
+	<servlet>
+        <servlet-name>SupplierServlet</servlet-name>
+        <servlet-class>com.controllers.SupplierServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SupplierServlet</servlet-name>
+        <url-pattern>/suppliers</url-pattern>
+    </servlet-mapping>
 	<jsp-config>
         <taglib>
             <taglib-uri>http://java.sun.com/jsp/jstl/core</taglib-uri>

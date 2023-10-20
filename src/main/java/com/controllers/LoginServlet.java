@@ -25,7 +25,11 @@ public class LoginServlet extends HttpServlet {
                        response.addCookie(emailCookie);
                 	  
                       
-                        response.sendRedirect("AdminHomeView.jsp");
+                        if(email.equals("admin@admin.com")) {
+                        	response.sendRedirect("AdminHomeView.jsp");
+                        }else {
+                        	response.sendRedirect("/medicine-catalog");
+                        }
                        
                    } catch (IOException e) {
                        e.printStackTrace();

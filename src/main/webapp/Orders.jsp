@@ -20,8 +20,10 @@
                 <tr>
                     <th>Order ID</th>
                     <th>Ordered By</th>
+                    <th>Item Name</th>
                     <th>Ordered At</th>
                     <th>Address</th>
+                    
                     <th>Action</th>
                 </tr>
             </thead>
@@ -33,6 +35,7 @@
                             <tr>
                                 <td><%= order.getId() %></td>
                                 <td><%= order.getOrderedBy() %></td>
+                                <td><%= order.getItemName() %></td>
                                 <td><%= order.getOrderedAt() %></td>
                                 <td><%= order.getAddress() %></td>
                                 <td>

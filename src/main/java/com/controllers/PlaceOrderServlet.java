@@ -26,7 +26,7 @@ public class PlaceOrderServlet extends HttpServlet {
        
         
 
-        // Create an Order object
+       
         Order order = new Order();
         order.setItemName(medicineName);
 

@@ -95,18 +95,18 @@
         <div class="col-md-4">
             <div class="card">
                 <div class="card-body text-center">
-                    <h5 class="card-title">Booking Management</h5>
-                    <p class="card-text">Manage Booking</p>
-                    <a href="/EventPlaningSystem/bookings" class="btn btn-primary">Go to Booking Management</a>
+                    <h5 class="card-title">Order Management</h5>
+                    <p class="card-text">Manage Orders</p>
+                    <a href="/EventPlaningSystem/orders" class="btn btn-primary">Go to Order Management</a>
                 </div>
             </div>
         </div>
         <div class="col-md-4">
             <div class="card">
                 <div class="card-body text-center">
-                    <h5 class="card-title">Driver Management</h5>
-                    <p class="card-text">Manage drivers - Create, Edit, Delete</p>
-                    <a href="/EventPlaningSystem/drivers" class="btn btn-primary">Go to Driver Management</a>
+                    <h5 class="card-title">Supplier Management</h5>
+                    <p class="card-text">Manage supplier - Create, Edit, Delete</p>
+                    <a href="/EventPlaningSystem/suppliers" class="btn btn-primary">Go to supplier Management</a>
                 </div>
             </div>
         </div>
