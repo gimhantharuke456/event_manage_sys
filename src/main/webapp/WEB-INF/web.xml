@@ -41,6 +41,16 @@
 	    <url-pattern>/vehicles</url-pattern>
 	</servlet-mapping>
 	
+	 
+     <servlet>
+	    <servlet-name>BookingServlet</servlet-name>
+	    <servlet-class>com.controllers.BookingServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>BookingServlet</servlet-name>
+	    <url-pattern>/bookings</url-pattern>
+	</servlet-mapping>
+	
 	<jsp-config>
         <taglib>
             <taglib-uri>http://java.sun.com/jsp/jstl/core</taglib-uri>

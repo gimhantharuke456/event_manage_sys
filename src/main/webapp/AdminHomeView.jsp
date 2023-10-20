@@ -40,7 +40,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Reservation Management</h5>
                     <p class="card-text">Manage reservations</p>
-                    <a href="/EventPlaningSystem/reservation" class="btn btn-primary">Go to Reservation Management</a>
+                    <a href="/EventPlaningSystem/bookings" class="btn btn-primary">Go to Reservation Management</a>
                 </div>
             </div>
         </div>

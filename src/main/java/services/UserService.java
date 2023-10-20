@@ -2,6 +2,7 @@ package services;
 
 import models.UserModel;
 
+import java.util.List;
 import java.util.Map;
 
 import dao.UserDao;
@@ -36,5 +37,9 @@ public class UserService {
     public UserModel getUserByEmail(String email) {
         // Retrieve user from the database by email
         return userDao.getUserByEmail(email);
+    }
+    
+    public List<UserModel> getAllUsers(){
+    	return userDao.getAllUsers();
     }
 }

@@ -5,7 +5,9 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import models.UserModel;
@@ -36,9 +38,7 @@ public class UserDao {
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
                 String userEmail = resultSet.getString("email");
-                
-
-                // Create a Map to hold the email and role
+             
                 Map<String, String> userMap = new HashMap<>();
                 userMap.put("email", userEmail);
                
@@ -110,5 +110,30 @@ public class UserDao {
             e.printStackTrace();
         }
         return null; // Return null if user not found
+    }
+    public List<UserModel> getAllUsers() {
+  
+        List<UserModel> reservations = new ArrayList<>();
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM users");
+                ResultSet resultSet = preparedStatement.executeQuery()) {
+            while (resultSet.next()) {
+            	UserModel user = new UserModel();
+        	   int userId = resultSet.getInt("user_id");
+               String username = resultSet.getString("username");
+               String fullName = resultSet.getString("full_name");
+               String email = resultSet.getString("email");
+               user.setEmail(email);
+               user.setFullName(fullName);
+               user.setUserId(userId);
+               user.setUsername(username);
+               user.setPassword("");
+               reservations.add(user);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return reservations;
     }
 }
