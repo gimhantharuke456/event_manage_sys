@@ -29,9 +29,9 @@
         <div class="col-md-4">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Event Management</h5>
-                    <p class="card-text">Manage events - Create, Edit, Delete</p>
-                    <a href="/EventPlaningSystem/event" class="btn btn-primary">Go to Event Management</a>
+                    <h5 class="card-title">Vehicle Management</h5>
+                    <p class="card-text">Manage vehicles - Create, Edit, Delete</p>
+                    <a href="/EventPlaningSystem/vehicles" class="btn btn-primary">Go to Event Management</a>
                 </div>
             </div>
         </div>

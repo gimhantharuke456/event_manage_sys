@@ -15,22 +15,21 @@ import services.VehicleService;
 
 public class VehicleServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
-    
+
     private Connection getConnection() throws SQLException {
-    		Connection connection;
-    	  try {
-              Class.forName("com.mysql.jdbc.Driver");
-          } catch (ClassNotFoundException e) {
-              e.printStackTrace();
-          }
-          try {
-              connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/vehiclle_rental_db", "root", "");
-              return connection;
-          } catch (SQLException e) {
-              e.printStackTrace();
-              return null;
-          }
-         
+        Connection connection;
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        try {
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/vehiclle_rental_db", "root", "");
+            return connection;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -38,13 +37,21 @@ public class VehicleServlet extends HttpServlet {
         try (Connection connection = getConnection()) {
             VehicleService vehicleService = new VehicleService(connection);
 
-            List<Vehicle> vehicles = vehicleService.getAllVehicles();
-            request.setAttribute("vehicles", vehicles);
+            String action = request.getParameter("action");
 
-            request.getRequestDispatcher("vehicleList.jsp").forward(request, response);
+            if ("edit".equals(action)) {
+                int vehicleId = Integer.parseInt(request.getParameter("vehicleId"));
+                Vehicle vehicle = vehicleService.getVehicleById(vehicleId);
+                request.setAttribute("vehicle", vehicle);
+                request.getRequestDispatcher("editVehicle.jsp").forward(request, response);
+            } else {
+                List<Vehicle> vehicles = vehicleService.getAllVehicles();
+                request.setAttribute("vehicles", vehicles);
+                request.getRequestDispatcher("vehicleList.jsp").forward(request, response);
+            }
         } catch (SQLException e) {
             e.printStackTrace();
-            
+            // Handle the exception as needed
         }
     }
 

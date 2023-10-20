@@ -27,30 +27,29 @@
                     </thead>
                     <tbody>
                         <% 
-            				List<Vehicle> vehicles = (List<Vehicle>) request.getAttribute("vehicles");
-            if (vehicles != null) {
-                for (Vehicle vehicle : vehicles) { %>
-                    <tr>
-                        <td><%= vehicle.getVehicleId() %></td>
-                        <td><%= vehicle.getModel() %></td>
-                        <td><%= vehicle.getMake()%></td>
-                        <td><%= vehicle.isAvailability() %></td>
-                      
-                   
-                        <td>
-                            <!-- Edit button with data-reservation-id attribute -->
-                            <a href="#" class="btn btn-primary editReservationLink" data-vehicle-id="<%= vehicle.getVehicleId()%>">Edit</a>
-                            <!-- Delete button with data-reservation-id attribute -->
-                            <a href="#" class="btn btn-danger deleteReservationLink" data-vehicle-id="<%= vehicle.getVehicleId()%>">Delete</a>
-                        </td>
-                    </tr>
-                <%} } %>
+                            List<Vehicle> vehicles = (List<Vehicle>) request.getAttribute("vehicles");
+                            if (vehicles != null) {
+                                for (Vehicle vehicle : vehicles) { %>
+                                    <tr>
+                                        <td><%= vehicle.getVehicleId() %></td>
+                                        <td><%= vehicle.getModel() %></td>
+                                        <td><%= vehicle.getMake()%></td>
+                                        <td><%= vehicle.isAvailability() %></td>
+                                        <td>
+                                            <!-- Edit button with data-vehicle-id attribute -->
+                                            <a href="<%= request.getContextPath() %>/vehicles?action=edit&vehicleId=<%=vehicle.getVehicleId()%>" class="btn btn-primary editVehicleLink" data-vehicle-id="<%= vehicle.getVehicleId()%>">Edit</a>
+                                            <!-- Delete button with data-vehicle-id attribute -->
+                                            <a href="#" class="btn btn-danger deleteVehicleLink" data-vehicle-id="<%= vehicle.getVehicleId()%>" data-toggle="modal" data-target="#deleteConfirmationModal">Delete</a>
+                                        </td>
+                                    </tr>
+                        <%} } %>
                     </tbody>
                 </table>
                 <!-- Add new vehicle form -->
                 <h2>Add New Vehicle</h2>
-                <form action="<%= request.getContextPath() %>/vehicles" method="post">
-                    <input type="hidden" name="action" value="create">
+                <form action="<%= request.getContextPath() %>/vehicles" method="post" id="vehicleForm">
+                    <input type="hidden" name="action" id="formAction" value="create">
+                    <input type="hidden" name="vehicleId" id="vehicleId">
                     <div class="form-group">
                         <label for="model">Model:</label>
                         <input type="text" class="form-control" id="model" name="model" required>
@@ -73,5 +72,49 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <script>
+        $(document).ready(function() {
+            // Edit Vehicle link click handler
+            $('.editVehicleLink').click(function() {
+                var vehicleId = $(this).data('vehicle-id');
+               	
+            });
+
+            function loadEditVehicleData(vehicleId) {
+                // Make an AJAX request to fetch data for the selected vehicle
+                fetch('<%= request.getContextPath() %>/vehicles?action=edit&vehicleId=' + vehicleId, {
+                        method: 'GET',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        // Populate the fields in the edit form with the fetched data
+                       
+                    })
+                    .catch(error => {
+                        // Handle errors
+                        console.error('Failed to fetch data for vehicle ID: ' + vehicleId);
+                    });
+            }
+
+            // Client-side validation for Add/Update Vehicle Form
+            $('#vehicleForm').submit(function(event) {
+                var isValid = true;
+                // Example: Add validation logic for each field
+                if ($('#model').val().trim() === '') {
+                    alert('Model is required.');
+                    isValid = false;
+                }
+                // Add other validation rules as needed
+
+                if (!isValid) {
+                    event.preventDefault(); // Prevent form submission
+                }
+            });
+        });
+    </script>
 </body>
 </html>
