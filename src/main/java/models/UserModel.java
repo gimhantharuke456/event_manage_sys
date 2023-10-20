@@ -1,43 +1,64 @@
 package models;
 
+import java.util.Date;
+
 public class UserModel {
-    private String email;
-    private String name;
+    private int userId;
+    private String username;
     private String password;
-    
-    public UserModel() {
-    	
-    }
-    // Constructor
-    public UserModel(String email, String name, String password) {
-        this.email = email;
-        this.name = name;
+    private String fullName;
+    private String email;
+
+    // Default constructor
+    public UserModel() {}
+
+    // Parameterized constructor
+    public UserModel(int userId, String username, String password, String fullName, String email) {
+        this.userId = userId;
+        this.username = username;
         this.password = password;
+        this.fullName = fullName;
+        this.email = email;
     }
 
-    // Getters
-    public String getEmail() {
-        return email;
+    // Getters and setters
+    public int getUserId() {
+        return userId;
     }
 
-    public String getName() {
-        return name;
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
         return password;
     }
 
-    // Setters
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
