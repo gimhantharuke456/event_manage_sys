@@ -1,13 +1,9 @@
 CREATE TABLE users (
     user_id INT PRIMARY KEY AUTO_INCREMENT,
-    username VARCHAR
-(255) NOT NULL UNIQUE,
-    password VARCHAR
-(255) NOT NULL,
-    full_name VARCHAR
-(255),
-    email VARCHAR
-(255)
+    username VARCHAR (255) NOT NULL UNIQUE,
+    password VARCHAR (255) NOT NULL,
+    full_name VARCHAR (255),
+    email VARCHAR (255)
 );
 
 CREATE TABLE medicines (
@@ -18,4 +14,11 @@ CREATE TABLE medicines (
     availablity INt DEFAULT  1
 );
 
+CREATE TABLE orders (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    ordered_by VARCHAR(100),
+    ordered_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
 
+ALTER TABLE orders ADD COLUMN address varchar(200);
+ALTER TABLE orders add COLUMN item_name varchar(12);

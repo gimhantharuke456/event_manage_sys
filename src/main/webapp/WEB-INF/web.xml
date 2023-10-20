@@ -41,7 +41,35 @@
         <url-pattern>/medicines</url-pattern>
     </servlet-mapping>
     
+ 
+    
+     <servlet>
+        <servlet-name>MedicineCatalogServlet</servlet-name>
+        <servlet-class>com.controllers.MedicineCatalogServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MedicineCatalogServlet</servlet-name>
+        <url-pattern>/medicine-catalog</url-pattern>
+    </servlet-mapping>
   
+  
+   <servlet>
+        <servlet-name>OrderServlet</servlet-name>
+        <servlet-class>com.controllers.OrderServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>OrderServlet</servlet-name>
+        <url-pattern>/orders</url-pattern>
+    </servlet-mapping>
+    
+      <servlet>
+        <servlet-name>PlaceOrderServlet</servlet-name>
+        <servlet-class>com.controllers.PlaceOrderServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PlaceOrderServlet</servlet-name>
+        <url-pattern>/placeOrder</url-pattern>
+    </servlet-mapping>
 	
 	<jsp-config>
         <taglib>
