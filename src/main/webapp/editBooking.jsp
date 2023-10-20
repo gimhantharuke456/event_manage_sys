@@ -37,7 +37,6 @@ pageEncoding="UTF-8"%> <%@ page import="models.Booking" %>
                 name="userId"
                 value="<%= booking.getUserId() %>"
                 required
-                
               />
             </div>
             <div class="form-group">
@@ -47,7 +46,6 @@ pageEncoding="UTF-8"%> <%@ page import="models.Booking" %>
                 class="form-control"
                 id="vehicleId"
                 name="vehicleId"
-                
                 value="<%= booking.getVehicleId() %>"
                 required
               />

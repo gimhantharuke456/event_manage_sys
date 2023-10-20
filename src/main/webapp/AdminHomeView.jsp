@@ -31,16 +31,16 @@
                 <div class="card-body">
                     <h5 class="card-title">Vehicle Management</h5>
                     <p class="card-text">Manage vehicles - Create, Edit, Delete</p>
-                    <a href="/EventPlaningSystem/vehicles" class="btn btn-primary">Go to Event Management</a>
+                    <a href="/EventPlaningSystem/vehicles" class="btn btn-primary">Go to Vehicle Management</a>
                 </div>
             </div>
         </div>
         <div class="col-md-4">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Reservation Management</h5>
-                    <p class="card-text">Manage reservations</p>
-                    <a href="/EventPlaningSystem/bookings" class="btn btn-primary">Go to Reservation Management</a>
+                    <h5 class="card-title">Booking Management</h5>
+                    <p class="card-text">Manage Booking</p>
+                    <a href="/EventPlaningSystem/bookings" class="btn btn-primary">Go to Booking Management</a>
                 </div>
             </div>
         </div>
@@ -49,7 +49,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Package Management</h5>
                     <p class="card-text">Manage packages - Create, Edit, Delete</p>
-                    <a href="/EventPlaningSystem/package" class="btn btn-primary">Go to Package Management</a>
+                    <a href="/EventPlaningSystem/drivers" class="btn btn-primary">Go to Package Management</a>
                 </div>
             </div>
         </div>

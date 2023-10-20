@@ -51,6 +51,15 @@
 	    <url-pattern>/bookings</url-pattern>
 	</servlet-mapping>
 	
+	 <servlet>
+	    <servlet-name>DriverServlet</servlet-name>
+	    <servlet-class>com.controllers.DriverServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>DriverServlet</servlet-name>
+	    <url-pattern>/drivers</url-pattern>
+	</servlet-mapping>
+	
 	<jsp-config>
         <taglib>
             <taglib-uri>http://java.sun.com/jsp/jstl/core</taglib-uri>
