@@ -16,17 +16,17 @@ public class UserProfileServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-    	Cookie[] cookies = request.getCookies();
-    	String userEmail = null;
+        Cookie[] cookies = request.getCookies();
+        String userEmail = null;
 
-    	if (cookies != null) {
-    	    for (Cookie cookie : cookies) {
-    	        if ("email".equals(cookie.getName())) {
-    	            userEmail = cookie.getValue();
-    	            break;
-    	        }
-    	    }
-    	}
+        if (cookies != null) {
+            for (Cookie cookie : cookies) {
+                if ("email".equals(cookie.getName())) {
+                    userEmail = cookie.getValue();
+                    break;
+                }
+            }
+        }
         UserModel user = userService.getUserByEmail(userEmail);
         request.setAttribute("user", user);
         request.getRequestDispatcher("UserView.jsp").forward(request, response);
@@ -38,25 +38,22 @@ public class UserProfileServlet extends HttpServlet {
         Cookie[] cookies = request.getCookies();
         String userEmail = null;
 
-    	if (cookies != null) {
-    	    for (Cookie cookie : cookies) {
-    	        if ("email".equals(cookie.getName())) {
-    	            userEmail = cookie.getValue();
-    	            break;
-    	        }
-    	    }
-    	}
+        if (cookies != null) {
+            for (Cookie cookie : cookies) {
+                if ("email".equals(cookie.getName())) {
+                    userEmail = cookie.getValue();
+                    break;
+                }
+            }
+        }
         UserModel user = userService.getUserByEmail(userEmail);
 
         if (action.equals("edit")) {
-        
-            user.setName(request.getParameter("name"));
+            user.setFullName(request.getParameter("fullName"));
             user.setPassword(request.getParameter("password"));
             userService.updateUser(user);
         } else if (action.equals("delete")) {
-        
             userService.deleteUser(userEmail);
-           
             response.sendRedirect("LoginView.jsp");
             return;
         }

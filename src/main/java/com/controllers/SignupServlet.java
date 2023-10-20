@@ -2,46 +2,41 @@ package com.controllers;
 
 import java.io.IOException;
 
-import jakarta.servlet.http.*;
-import services.UserService;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import models.UserModel;
+import services.UserService;
 
 public class SignupServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-           {
-        // Get user input from the signup form
-        String name = request.getParameter("name");
+            throws ServletException, IOException {
+      
+        String username = request.getParameter("username"); 
+        String fullName = request.getParameter("fullName");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
-        
-        // Create a user model with the input data
+
+  
         UserModel user = new UserModel();
-        user.setName(name);
+        user.setUsername(username);
+        user.setFullName(fullName);
         user.setEmail(email);
         user.setPassword(password);
-        
-        // Call the UserService to handle the signup logic
+
+      
         UserService userService = new UserService();
         boolean signupSuccess = userService.createUser(user);
 
         if (signupSuccess) {
-            // Redirect to login page on successful signup
-            try {
-				response.sendRedirect("LoginView.jsp");
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+          
+            response.sendRedirect("LoginView.jsp");
         } else {
-            // Display an error message or handle the error as needed
-            try {
-				response.getWriter().println("Signup failed. Please try again.");
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+            
+            response.getWriter().println("Signup failed. Please try again.");
         }
     }
 }
