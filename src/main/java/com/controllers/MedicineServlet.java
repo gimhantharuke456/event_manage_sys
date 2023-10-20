@@ -20,7 +20,6 @@ public class MedicineServlet extends HttpServlet {
         String action = request.getParameter("action");
 
         if (action == null) {
-            // Default action: Show all medicines
             List<Medicine> medicines = medicineService.getAllMedicines();
             request.setAttribute("medicines", medicines);
             request.getRequestDispatcher("MedicineListView.jsp").forward(request, response);

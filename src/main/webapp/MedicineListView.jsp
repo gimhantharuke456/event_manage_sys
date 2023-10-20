@@ -26,24 +26,23 @@
                 </tr>
             </thead>
             <tbody>
-                <c:forEach var="medicine" items="${medicines}">
-                    <tr>
-                        <td>${medicine.id}</td>
-                        <td>${medicine.name}</td>
-                        <td>${medicine.price}</td>
-                        <td>${medicine.availability}</td>
-                        <td>
-                            <!-- Edit button with data-medicine-id attribute -->
-                            <a href="${pageContext.request.contextPath}/medicines?action=edit&medicineId=${medicine.id}"
-                                class="btn btn-primary editMedicineLink"
-                                data-medicine-id="${medicine.id}">Edit</a>
-                            <!-- Delete button with data-medicine-id attribute -->
-                            <a href="${pageContext.request.contextPath}/medicines?action=delete&medicineId=${medicine.id}"
-                                class="btn btn-danger deleteMedicineLink"
-                                data-medicine-id="${medicine.id}">Delete</a>
-                        </td>
-                    </tr>
-                </c:forEach>
+                 <% 
+                            List<Medicine> medicines = (List<Medicine>) request.getAttribute("medicines");
+                            if (medicines != null) {
+                                for (Medicine medicine : medicines) { %>
+                                    <tr>
+                                        <td><%= medicine.getId() %></td>
+                                        <td><%= medicine.getName() %></td>
+                                        <td><%= medicine.getPrice() %></td>
+                                        <td><%= medicine.getAvailability() %></td>
+                                        <td>
+                                            <!-- Edit button with data-medicine-id attribute -->
+                                            <a href="<%= request.getContextPath() %>/medicines?action=edit&medicineId=<%=medicine.getId()%>" class="btn btn-primary editMedicineLink" data-medicine-id="<%= medicine.getId()%>">Edit</a>
+                                            <!-- Delete button with data-medicine-id attribute -->
+                                            <a href="#" class="btn btn-danger deleteMedicineLink" data-medicine-id="<%= medicine.getId()%>" data-toggle="modal" data-target="#deleteConfirmationModal">Delete</a>
+                                        </td>
+                                    </tr>
+                        <%} } %>
             </tbody>
         </table>
         <!-- Add new medicine form -->

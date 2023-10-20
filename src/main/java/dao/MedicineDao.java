@@ -10,7 +10,7 @@ public class MedicineDao {
     private Connection connection;
 
     public MedicineDao() {
-        // Initialize your database connection (Assuming you have a ConnectionManager class)
+        
         try {
             Class.forName("com.mysql.jdbc.Driver");
         } catch (ClassNotFoundException e) {
@@ -33,12 +33,13 @@ public class MedicineDao {
                 medicine.setId(resultSet.getInt("id"));
                 medicine.setName(resultSet.getString("name"));
                 medicine.setPrice(resultSet.getDouble("price"));
-                medicine.setAvailability(resultSet.getInt("availability"));
+                medicine.setAvailability(resultSet.getInt("availablity"));
                 medicines.add(medicine);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        System.out.println("there are " + medicines.size());
         return medicines;
     }
 
@@ -52,7 +53,7 @@ public class MedicineDao {
                 medicine.setId(resultSet.getInt("id"));
                 medicine.setName(resultSet.getString("name"));
                 medicine.setPrice(resultSet.getDouble("price"));
-                medicine.setAvailability(resultSet.getInt("availability"));
+                medicine.setAvailability(resultSet.getInt("availablity"));
                 return medicine;
             }
         } catch (SQLException e) {
