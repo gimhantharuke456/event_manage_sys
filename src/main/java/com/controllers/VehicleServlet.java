@@ -44,7 +44,13 @@ public class VehicleServlet extends HttpServlet {
                 Vehicle vehicle = vehicleService.getVehicleById(vehicleId);
                 request.setAttribute("vehicle", vehicle);
                 request.getRequestDispatcher("editVehicle.jsp").forward(request, response);
-            } else {
+            }
+            else if ("delete".equals(action)) {
+                int vehicleId = Integer.parseInt(request.getParameter("vehicleId"));
+                vehicleService.deleteVehicle(vehicleId);
+                response.sendRedirect(request.getContextPath() + "/vehicles");
+                }
+            else {
                 List<Vehicle> vehicles = vehicleService.getAllVehicles();
                 request.setAttribute("vehicles", vehicles);
                 request.getRequestDispatcher("vehicleList.jsp").forward(request, response);

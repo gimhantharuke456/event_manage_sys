@@ -75,6 +75,14 @@
 
     <script>
         $(document).ready(function() {
+
+            $('.deleteVehicleLink').click(function() {
+                var vehicleId = $(this).data('vehicle-id');
+                // Set the delete link in the modal to include the vehicleId
+                $('#deleteVehicleLink').attr('href', '<%= request.getContextPath() %>/vehicles?action=delete&vehicleId=' + vehicleId);
+                // Show the delete confirmation modal
+                $('#deleteConfirmationModal').modal('show');
+            });
             // Edit Vehicle link click handler
             $('.editVehicleLink').click(function() {
                 var vehicleId = $(this).data('vehicle-id');
