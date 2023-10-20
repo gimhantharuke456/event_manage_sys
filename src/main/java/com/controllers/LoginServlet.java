@@ -23,12 +23,12 @@ public class LoginServlet extends HttpServlet {
                 	   Cookie emailCookie = new Cookie("email", email);
                        emailCookie.setMaxAge(30 * 24 * 60 * 60); 
                        response.addCookie(emailCookie);
-                	  
+                       String path = request.getContextPath().toString();
                       
                         if(email.equals("admin@admin.com")) {
                         	response.sendRedirect("AdminHomeView.jsp");
                         }else {
-                        	response.sendRedirect("/medicine-catalog");
+                        	response.sendRedirect( path+ "/medicine-catalog");
                         }
                        
                    } catch (IOException e) {
