@@ -86,9 +86,9 @@
         <div class="col-md-4">
             <div class="card">
                 <div class="card-body text-center">
-                    <h5 class="card-title">Vehicle Management</h5>
-                    <p class="card-text">Manage vehicles - Create, Edit, Delete</p>
-                    <a href="/EventPlaningSystem/vehicles" class="btn btn-primary">Go to Vehicle Management</a>
+                    <h5 class="card-title">Medicine Management</h5>
+                    <p class="card-text">Manage medicines - Create, Edit, Delete</p>
+                    <a href="/EventPlaningSystem/medicines" class="btn btn-primary">Go to Medicine Management</a>
                 </div>
             </div>
         </div>

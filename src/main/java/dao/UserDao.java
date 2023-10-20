@@ -23,7 +23,7 @@ public class UserDao {
             e.printStackTrace();
         }
         try {
-            this.connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/vehiclle_rental_db", "root", "");
+            this.connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/medication_store", "root", "");
         } catch (SQLException e) {
             e.printStackTrace();
         }
