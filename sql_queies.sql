@@ -22,3 +22,9 @@ CREATE TABLE orders (
 
 ALTER TABLE orders ADD COLUMN address varchar(200);
 ALTER TABLE orders add COLUMN item_name varchar(12);
+
+CREATE TABLE suppliers (
+    email varchar(100) PRIMARY KEY ,
+    name varchar(100),
+    address varchar(250),
+    contactNumber varchar(12));
