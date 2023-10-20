@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="models.Vehicle" %>
+<%@ page import="java.util.List" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,18 +26,25 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <c:forEach var="vehicle" items="${vehicles}">
-                            <tr>
-                                <td>${vehicle.vehicleId}</td>
-                                <td>${vehicle.model}</td>
-                                <td>${vehicle.make}</td>
-                                <td>${vehicle.availability}</td>
-                                <td>
-                                    <a href="<%= request.getContextPath() %>/vehicles?action=update&vehicleId=${vehicle.vehicleId}" class="btn btn-warning">Update</a>
-                                    <a href="<%= request.getContextPath() %>/vehicles?action=delete&vehicleId=${vehicle.vehicleId}" class="btn btn-danger">Delete</a>
-                                </td>
-                            </tr>
-                        </c:forEach>
+                        <% 
+            				List<Vehicle> vehicles = (List<Vehicle>) request.getAttribute("vehicles");
+            if (vehicles != null) {
+                for (Vehicle vehicle : vehicles) { %>
+                    <tr>
+                        <td><%= vehicle.getVehicleId() %></td>
+                        <td><%= vehicle.getModel() %></td>
+                        <td><%= vehicle.getMake()%></td>
+                        <td><%= vehicle.isAvailability() %></td>
+                      
+                   
+                        <td>
+                            <!-- Edit button with data-reservation-id attribute -->
+                            <a href="#" class="btn btn-primary editReservationLink" data-vehicle-id="<%= vehicle.getVehicleId()%>">Edit</a>
+                            <!-- Delete button with data-reservation-id attribute -->
+                            <a href="#" class="btn btn-danger deleteReservationLink" data-vehicle-id="<%= vehicle.getVehicleId()%>">Delete</a>
+                        </td>
+                    </tr>
+                <%} } %>
                     </tbody>
                 </table>
                 <!-- Add new vehicle form -->
