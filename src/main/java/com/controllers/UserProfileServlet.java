@@ -35,8 +35,18 @@ public class UserProfileServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String action = request.getParameter("action");
-        String email ="thamodathathsarani98@gmail.com";
-        UserModel user = userService.getUserByEmail(email);
+        Cookie[] cookies = request.getCookies();
+        String userEmail = null;
+
+    	if (cookies != null) {
+    	    for (Cookie cookie : cookies) {
+    	        if ("email".equals(cookie.getName())) {
+    	            userEmail = cookie.getValue();
+    	            break;
+    	        }
+    	    }
+    	}
+        UserModel user = userService.getUserByEmail(userEmail);
 
         if (action.equals("edit")) {
         
@@ -45,7 +55,7 @@ public class UserProfileServlet extends HttpServlet {
             userService.updateUser(user);
         } else if (action.equals("delete")) {
         
-            userService.deleteUser(email);
+            userService.deleteUser(userEmail);
            
             response.sendRedirect("LoginView.jsp");
             return;

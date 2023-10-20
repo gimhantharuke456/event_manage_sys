@@ -12,7 +12,7 @@
 <div class="container mt-4">
     <h2>User Profile</h2>
 
-    <form action="profile" method="post">
+    <form action="profile?action=edit" method="post">
         <input type="hidden" name="action" value="edit">
         <div class="form-group">
             <label for="name">Name:</label>
