@@ -23,7 +23,7 @@ public class UserDao {
             e.printStackTrace();
         }
         try {
-            this.connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/medication_store", "root", "");
+            this.connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/music_store", "root", "");
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -53,10 +53,10 @@ public class UserDao {
 
     public boolean createUser(UserModel user) {
         // Logic to create a new user
-        String query = "INSERT INTO users (email, full_name, password,username) VALUES (?, ?, ?,?)";
+        String query = "INSERT INTO users (email, name, password,username) VALUES (?, ?, ?,?)";
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setString(1, user.getEmail());
-            preparedStatement.setString(2, user.getFullName()); 
+            preparedStatement.setString(2, user.getName()); 
             preparedStatement.setString(3, user.getPassword());
             preparedStatement.setString(4, user.getUsername());
             return preparedStatement.executeUpdate() > 0; // Returns true if insertion is successful
@@ -68,9 +68,9 @@ public class UserDao {
 
     public boolean updateUser(UserModel user) {
         // Logic to update user information
-        String query = "UPDATE users SET full_name = ?, password = ? WHERE email = ?";
+        String query = "UPDATE users SET name = ?, password = ? WHERE email = ?";
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-            preparedStatement.setString(1, user.getFullName());
+            preparedStatement.setString(1, user.getName());
             preparedStatement.setString(2, user.getPassword());
             preparedStatement.setString(3, user.getEmail());
             return preparedStatement.executeUpdate() > 0; // Returns true if update is successful
@@ -99,12 +99,15 @@ public class UserDao {
             preparedStatement.setString(1, email);
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
-                int userId = resultSet.getInt("user_id");
-                String username = resultSet.getString("username");
-                String fullName = resultSet.getString("full_name");
-                String password = resultSet.getString("password");
-
-                return new UserModel(userId, username, password, fullName, email);
+            	 UserModel user = new UserModel();
+                 user.setId(resultSet.getInt("user_id"));
+                 user.setUsername(resultSet.getString("username"));
+                 user.setName(resultSet.getString("name"));
+                 user.setPassword(resultSet.getString("password"));
+                 user.setEmail(email);
+                 return user;
+                
+           
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -121,11 +124,11 @@ public class UserDao {
             	UserModel user = new UserModel();
         	   int userId = resultSet.getInt("user_id");
                String username = resultSet.getString("username");
-               String fullName = resultSet.getString("full_name");
+               String fullName = resultSet.getString("name");
                String email = resultSet.getString("email");
                user.setEmail(email);
-               user.setFullName(fullName);
-               user.setUserId(userId);
+               user.setName(fullName);
+               user.setId(userId);
                user.setUsername(username);
                user.setPassword("");
                reservations.add(user);

@@ -1,10 +1,14 @@
 CREATE TABLE users (
-    user_id INT PRIMARY KEY AUTO_INCREMENT,
-    username VARCHAR (255) NOT NULL UNIQUE,
-    password VARCHAR (255) NOT NULL,
-    full_name VARCHAR (255),
-    email VARCHAR (255)
+    user_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    username VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    phone_no VARCHAR(15) NOT NULL
 );
+
+
+
 CREATE TABLE packages (
     id INT AUTO_INCREMENT PRIMARY KEY,
     packageName VARCHAR(255) NOT NULL,
@@ -15,4 +19,14 @@ CREATE TABLE packages (
     packagePrice DOUBLE,
     availableTimePeriod VARCHAR(255),
     packagePoster VARCHAR(255)
+);
+CREATE TABLE feedback (
+    feedbackId INT PRIMARY KEY AUTO_INCREMENT,
+    packageId INT,
+    rating1 INT,
+    rating2 INT,
+    rating3 INT,
+    comment TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );

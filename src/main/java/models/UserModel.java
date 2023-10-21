@@ -1,33 +1,42 @@
 package models;
 
-import java.util.Date;
-
 public class UserModel {
-    private int userId;
+	private int id;
+    private String name;
     private String username;
-    private String password;
-    private String fullName;
     private String email;
+    private String password;
+    private String phoneNo;
 
-    // Default constructor
-    public UserModel() {}
+    // Constructors, getters, and setters
 
-    // Parameterized constructor
-    public UserModel(int userId, String username, String password, String fullName, String email) {
-        this.userId = userId;
+    public UserModel() {
+    }
+
+    public UserModel(String name, String username, String email, String password, String phoneNo) {
+        this.name = name;
         this.username = username;
-        this.password = password;
-        this.fullName = fullName;
         this.email = email;
+        this.password = password;
+        this.phoneNo = phoneNo;
     }
 
-    // Getters and setters
-    public int getUserId() {
-        return userId;
+    public int getId() {
+        return id;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    
+    public void  setId (int i) {
+        this.id = i;
+    }
+
+    
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getUsername() {
@@ -38,6 +47,14 @@ public class UserModel {
         this.username = username;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public String getPassword() {
         return password;
     }
@@ -46,19 +63,11 @@ public class UserModel {
         this.password = password;
     }
 
-    public String getFullName() {
-        return fullName;
+    public String getPhoneNo() {
+        return phoneNo;
     }
 
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
+    public void setPhoneNo(String phoneNo) {
+        this.phoneNo = phoneNo;
     }
 }

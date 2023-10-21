@@ -40,7 +40,7 @@
 	
 	<div class="wrapper">
     <h2>Registration</h2>
-    <form action="signup.php" method="post">
+    <form action="SignupServlet" method="post">
 	
 	
       <div class="input-box">

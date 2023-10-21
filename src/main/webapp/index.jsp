@@ -31,13 +31,13 @@
       <ul class="nav-links">
         <i class="uil uil-times navCloseBtn"></i>
          <li><a href="index.php">Home</a></li>
-        <li><a href="../Theater/home.html">Packages</a></li>
-        <li><a href="movies.php">Artists</a></li>
+        <li><a href="getPackages">Packages</a></li>
+        <li><a href="Artists.jsp">Artists</a></li>
         <li><a href="#">Songs</a></li>
         <li><a href="../About_us/home.html">About Us</a></li>
       </ul>
-    <a  class="button" href="loginFile.php">Login</a>
-	  <a class="button" href="register.html">Register</a>
+    
+	  <a class="button" href="<%= request.getContextPath() %>/profile">Profile</a>
 	  
     </nav>
       

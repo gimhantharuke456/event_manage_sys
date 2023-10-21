@@ -45,33 +45,32 @@
 	
 	<!--form-->
 	
-	 <div class="wrapper">
-    <header>Login Form</header>
-    <form action="login.php" method="POST">
-      <div class="field email">
-        <div class="input-area">
-          <input type="email" placeholder="Email Address" name="email">
-          <i class="icon fas fa-envelope"></i>
-          <i class="error error-icon fas fa-exclamation-circle"></i>
-        </div>
-        <div class="error error-txt">Email can't be blank</div>
-      </div>
-      <div class="field password">
-        <div class="input-area">
-          <input type="password" placeholder="Password" name="password">
-          <i class="icon fas fa-lock"></i>
-          <i class="error error-icon fas fa-exclamation-circle"></i>
-        </div>
-        <div class="error error-txt">Password can't be blank</div>
-      </div>
-      <div class="pass-txt"><a href="fogotPassword.php">Forgot password?</a></div>
-      <input type="submit" value="Login">
-	  <br>
-    </form>
-    <div class="sign-txt">Still don't have an account ? </div>
-    <button class="sign"><a href="signupFile.php" >Sign Up</button><br>
-    <a href="#">Terms & Conditions  |  Privacy</a>
-  </div>
+	<div class="wrapper">
+        <header>Login Form</header>
+        <form action="LoginServlet" method="POST">
+            <div class="field email">
+                <div class="input-area">
+                    <input type="email" placeholder="Email Address" name="email">
+                    <i class="icon fas fa-envelope"></i>
+                    <i class="error error-icon fas fa-exclamation-circle"></i>
+                </div>
+                <div class="error error-txt">Email can't be blank</div>
+            </div>
+            <div class="field password">
+                <div class="input-area">
+                    <input type="password" placeholder="Password" name="password">
+                    <i class="icon fas fa-lock"></i>
+                    <i class="error error-icon fas fa-exclamation-circle"></i>
+                </div>
+                <div class="error error-txt">Password can't be blank</div>
+            </div>
+       
+            <input type="submit" value="Login"><br>
+        </form>
+        <div class="sign-txt">Still don't have an account?</div>
+        <button class="sign"><a href="register.jsp">Sign Up</button><br>
+        <a href="#">Terms & Conditions  |  Privacy</a>
+    </div>
       
  
    <!--footer------------>	

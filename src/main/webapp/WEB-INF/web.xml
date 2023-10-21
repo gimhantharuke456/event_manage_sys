@@ -39,8 +39,24 @@
 	    <url-pattern>/getPackages</url-pattern>
 	</servlet-mapping>
     
- 
+    <servlet>
+	    <servlet-name>ProfileServlet</servlet-name>
+	    <servlet-class>com.controllers.ProfileServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>ProfileServlet</servlet-name>
+	    <url-pattern>/profile</url-pattern>
+	</servlet-mapping>
     
+     
+    <servlet>
+	    <servlet-name>FeedbackServlet</servlet-name>
+	    <servlet-class>com.controllers.FeedbackServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>FeedbackServlet</servlet-name>
+	    <url-pattern>/feedbacks</url-pattern>
+	</servlet-mapping>
      
 	<jsp-config>
         <taglib>
