@@ -5,26 +5,14 @@ CREATE TABLE users (
     full_name VARCHAR (255),
     email VARCHAR (255)
 );
-
-CREATE TABLE medicines (
-	id int PRIMARY KEY AUTO_INCREMENT,
-    name VARCHAR
-(50),
-    price DOUBLE,
-    availablity INt DEFAULT  1
+CREATE TABLE packages (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    packageName VARCHAR(255) NOT NULL,
+    type VARCHAR(255),
+    releasedYear INT,
+    language VARCHAR(255),
+    numberOfSongs INT,
+    packagePrice DOUBLE,
+    availableTimePeriod VARCHAR(255),
+    packagePoster VARCHAR(255)
 );
-
-CREATE TABLE orders (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    ordered_by VARCHAR(100),
-    ordered_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-
-ALTER TABLE orders ADD COLUMN address varchar(200);
-ALTER TABLE orders add COLUMN item_name varchar(12);
-
-CREATE TABLE suppliers (
-    email varchar(100) PRIMARY KEY ,
-    name varchar(100),
-    address varchar(250),
-    contactNumber varchar(12));
