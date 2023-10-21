@@ -26,6 +26,7 @@ public class PackageDao {
              ResultSet resultSet = preparedStatement.executeQuery()) {
             while (resultSet.next()) {
                 Package packageObj = new Package();
+                packageObj.setId(resultSet.getInt("id"));
                 packageObj.setPackageName(resultSet.getString("packageName"));
                 packageObj.setType(resultSet.getString("type"));
                 packageObj.setReleasedYear(resultSet.getInt("releasedYear"));
@@ -50,6 +51,7 @@ public class PackageDao {
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
                 Package packageObj = new Package();
+                packageObj.setId(resultSet.getInt("id"));
                 packageObj.setPackageName(resultSet.getString("packageName"));
                 packageObj.setType(resultSet.getString("type"));
                 packageObj.setReleasedYear(resultSet.getInt("releasedYear"));

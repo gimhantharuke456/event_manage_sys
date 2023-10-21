@@ -17,8 +17,8 @@
             </div>
             <br><br>
             <ul>
-               <li><a href="./packages.jsp">All Packages</a></li>
-                <li><a href="./addMovieDash.php">Add Package</a></li>
+               <li><a href="/EventPlaningSystem/getPackages">All Packages</a></li>
+                <li><a href="#">Add Package</a></li>
              
                 <li><a href="./logout.php">Logout</a></li>
             </ul>

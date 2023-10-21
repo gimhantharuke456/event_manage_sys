@@ -1,4 +1,6 @@
-
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="java.util.List" %>
+<%@ page import="models.Package" %>
 
 
 <!DOCTYPE html>
@@ -13,14 +15,14 @@
     <div class="wrapper">
         <div class="sidebar">
             <div class="sidebarHead">
-                <img src="photos/logo.jpg" height="50px" width="auto">
+
                 <h1>Heara</h1>
                 <h3>Admin Dashboard</h3>
             </div>
             <br><br>
             <ul>
-                <li><a href="./movieDash.php">All Packages</a></li>
-                <li><a href="addpackages.html">Add Package</a></li>
+                <li><a href="/EventPlaningSystem/getPackages">All Packages</a></li>
+                <li><a href="addpackages.jsp">Add Package</a></li>
              
                 <li><a href="./logout.php">Logout</a></li>
             </ul>
@@ -30,34 +32,30 @@
                 <h2>All Packages</h2>
             </div>
             <div style="display:flex;justify-content: space-around;flex-wrap: wrap;">
-            <?php
-            // Check if there are any movies
-            if (mysqli_num_rows($result) > 2) {
-                // Display movie cards
-                while ($row = mysqli_fetch_assoc($result)) {
-                    $movID = $row['movID'];
-                    $title = $row['movName'];
-                    $genre = $row['movGenre'];
-                    $year = $row['movRelYear'];
-                    $language = $row['movLang'];
-                    $posterPath = $row['posterPath'];
+              <% 
+                List<Package> packages = (List<Package>) request.getAttribute("packages");
+                if (packages != null) {
+                    for (Package pkg : packages) { %>
+                       <div class="movie-card" style="color:black;">
+                        <img src="<%= pkg.getPackagePoster() %>" alt="${pkg.packageName}" style="width:100%">
+                        <div class="container">
+                            <h4><b><%=pkg.packageName %></b></h4>
+                            <p><%=pkg.type %></p>
+                            <p>Released Year: <%=pkg.releasedYear %></p>
+                            <p>Language: <%=pkg.language %></p>
+                            <p>Price: <%=pkg.packagePrice %></p>
+                            <p>Available Time Period: <%=pkg.availableTimePeriod %></p>
+                            <a href="<%= request.getContextPath() %>/getPackages?action=edit&id=<%= pkg.getPackageId() %>">
+        Update
+    </a>
 
-                    // Generate the movie card HTML
-                    echo '
-                    <div class="movie-card">
-                        <img src="' . $posterPath . '" alt="' . $title . '">
-                        <h3>' . $title . '</h3>
-                        <div class="card-buttons">
-                            <a href="editMovie.php?id=' . $movID . '">Edit</a>
-                            <a href="deleteMovie.php?id=' . $movID . '">Delete</a>
+    <!-- Delete link -->
+    <a href="<%= request.getContextPath() %>/getPackages?action=deletePackage&id=<%= pkg.getPackageId() %>">
+        Delete
+    </a>
                         </div>
-                    </div>';
-                }
-            } else {
-                // Display a message if there are no movies
-                echo '<p>No movies found.</p>';
-            }
-            ?>
+                    </div>
+                <%} } %>
             </div>
         </div>
     </div>

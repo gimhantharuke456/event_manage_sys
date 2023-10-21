@@ -623,6 +623,7 @@ input[type=number] {
   border-radius: 10px;
   display:flex;
   width: 350px;
+  color: black;
 }
 .sessionContent{
   width:100%;

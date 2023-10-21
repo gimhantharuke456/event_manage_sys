@@ -2,14 +2,14 @@ package models;
 
 public class Package {
 private int packageId;
-    private String packageName;
-    private String type;
-    private int releasedYear;
-    private String language;
-    private int numberOfSongs;
-    private double packagePrice;
-    private String availableTimePeriod;
-    private String packagePoster;
+    public String packageName;
+    public String type;
+    public int releasedYear;
+    public String language;
+    public int numberOfSongs;
+    public double packagePrice;
+    public String availableTimePeriod;
+    public String packagePoster;
 
     public int getPackageId() {
     	return this.packageId;
