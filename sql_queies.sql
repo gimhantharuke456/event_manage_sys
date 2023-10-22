@@ -30,3 +30,14 @@ CREATE TABLE feedback (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
+CREATE TABLE Booking (
+    bookingId INT PRIMARY KEY AUTO_INCREMENT,
+    photographerId INT,
+    packageName VARCHAR(255),
+    packageFee DOUBLE,
+    customerName VARCHAR(255),
+    contactNumber VARCHAR(20),
+    venueId INT,
+    packageId INT
+  
+);
